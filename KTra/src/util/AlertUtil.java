@@ -9,7 +9,27 @@ public class AlertUtil {
         if (option.equals("Student-Remove-Success")) output = "\033[0;92m■ Product removed successfully!\033[0m\n";
         if (option.equals("Student-Name")) output = "■ Type a student name: ";
         if (option.equals("Student-Remove-Confirm")) output = "■ Are your sure want to remove this student?" + confirm;
+
         if (option.equals("Student-Edit-Name-Success")) output = "\033[0;92m■ Student name edited successfully!\033[0m\n";
+        if (option.equals("FullName-Edit-Success")) output = "\033[0;92m■ FullName edited successfully!\033[0m\n";
+        if (option.equals("Address-Edit-Success")) output = "\033[0;92m■ Address edited successfully!\033[0m\n";
+        if (option.equals("Email-Edit-Success")) output = "\033[0;92m■ Email edited successfully!\033[0m\n";
+
+        if (option.equals("Add-Success")) output = "\033[0;92m■ Add successfully!\033[0m\n";
+
+        if (option.equals("Users-Name-Require")) output = "\033[0;91m■ UsersName must be between 8-20 character and not empty!\033[0m\n";
+        if (option.equals("User-Name")) output = "■ Type a UserName: ";
+        if (option.equals("PassWord-Require")) output = "\033[0;91m■ PassWord must be from 8 character and not empty!\033[0m\n";
+        if (option.equals("PassWord")) output = "■ Type a PassWord: ";
+        if (option.equals("FullName-Require")) output = "\033[0;91m■ FullName nhập không phù hợp, Vui lòng nhập lại (Tên phải viết hoa chữ cái đầu và không dấu) !\033[0m\n";
+        if (option.equals("FullName")) output = "■ Type a FullName(vd: Nguyen Van A): ";
+
+        if (option.equals("Address")) output = "■ Type a Address(vd: Huế): ";
+        if (option.equals("Email")) output = "■ Type a Email(vd: A@gmail.com): ";
+        if (option.equals("Email-Require")) output = "\033[0;91m■ Email Login does not match, please re-enter\033[0m\n";
+        if (option.equals("Email-Already-Exist")) output = "\033[0;91m■ Email already exists! Please re-enter \033[0m\n";
+        if (option.equals("UsersName-Require")) output = "\033[0;91m■ Email Login does not match, please re-enter\033[0m\n";
+        if (option.equals("UserName-Already-Exist")) output = "\033[0;91m■ UserName already exists! Please re-enter \033[0m\n";
 
         if (option.equals("Select")) output = "\033[0;92m■ Select : \n\033[0m";
         if (option.equals("Invalid-Select")) output = "\033[0;91m■ Invalid selected option, please try again!\n\033[0m";
@@ -17,14 +37,15 @@ public class AlertUtil {
 
         if (option.equals("Phone-Number-Require")) output = "\033[0;91m■ Phone number must 10 character and start with 09 || 03 or 07~! \033[0m\n";
         if (option.equals("Phone-Number-Edit-Success")) output = "\033[0;92m■ Phone Number edited successfully!\033[0m\n";
-        if (option.equals("Phone-Number")) output = "■ Phone number: ";
+        if (option.equals("Phone-Number")) output = "■ Phone number(vd: 0345129876): ";
+        if (option.equals("Phone-Number-Already-Exist")) output = "\033[0;91m■ Phone number already exists! Please re-enter \033[0m\n";
 
         if (option.equals("Sex-Require")) output = "\033[0;91m■ Sex must be between Male, Female and Private \033[0m\n";
         if (option.equals("Sex-Edit-Success")) output = "\033[0;92m■ Student of sex edited successfully!\033[0m\n";
-        if (option.equals("Sex")) output = "■ Sex : ";
+        if (option.equals("Sex")) output = "■ Sex (Male, Female or Private): ";
 
         if (option.equals("DateOfBirth-Require")) output = "\033[0;91m■ Date Of Birth must be formatted as dd/MM/yyyy \033[0m\n";
-        if (option.equals("Date Of Birth")) output = "■ Date Of Birth : ";
+        if (option.equals("Date Of Birth")) output = "■ Date Of Birth(vd:01/01/2000): ";
         if (option.equals("DateOfBirth-Edit-Success")) output = "\033[0;92m■ Date Of Birth edited successfully!\033[0m\n";
 
         if (option.equals("Account-Id-Not-Exist")) output = "\033[0;91m■ Account id is not exists, please try again!\033[0m\n";
@@ -34,8 +55,8 @@ public class AlertUtil {
 
 
         if (option.equals("Student-Id-Not-Exist")) output = "\033[0;91m■ Student id is not exists, please try again!\033[0m\n";
-        if (option.equals("Student-Id-Render")) output = "\033[0;91m■ Student Id does not exist \033[0m\n";
-        if (option.equals("Student-Id")) output = "■ Student Id : ";
+        if (option.equals("Student-Id-Render")) output = "\033[0;91m■ Id does not exist \033[0m\n";
+        if (option.equals("Student-Id")) output = "■ Id : ";
 
         if (option.equals("Continue")) output = "■ Continue Edit ? \n";
         if (option.equals("Continue-rep")) output = "1. yes \n" + "2. no \n" + "Enter the number : \n";

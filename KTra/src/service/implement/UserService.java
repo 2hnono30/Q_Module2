@@ -99,7 +99,7 @@ public class UserService implements IUserService {
                 if (userPhoneNumber != null && !userPhoneNumber.isEmpty())
                     temp.setUserPhoneNumber(userPhoneNumber);
 
-//                temp.setUserUpdateDate(Instant.now());
+                temp.setUserUpdateDate(Instant.now());
                 fileUtil.fileWrite(PATH_USER_DATA, userList);
             }
         }

@@ -3,7 +3,6 @@ package view.account;
 import util.EventUtil;
 import util.MenuUtil;
 import util.UsersEventUtil;
-import view.manager.InputOption;
 
 import java.util.Scanner;
 
@@ -27,13 +26,13 @@ public class AdminLogIn {
                         usersEventUtil.updateAdmin();
                         break;
                     case "3":
-                        usersEventUtil.showUsers(InputOption.SHOW);
+                        usersEventUtil.showUsers();
                         break;
                     case "4":
                         usersEventUtil.deleteUsers();
                         break;
                     case "o":
-                        eventUtil.returnUtil("Sign-Out");
+                        usersEventUtil.returnUtil("Sign-Out");
                         break;
                     case "r":
                         usersEventUtil.returnUtil("Admin-Main-Return");

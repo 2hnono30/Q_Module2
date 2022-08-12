@@ -4,8 +4,9 @@ import util.AlertUtil;
 import util.EventUtil;
 import util.MenuUtil;
 
-import java.util.Locale;
 import java.util.Scanner;
+
+import static view.account.UsersLogIn.usersLogInView;
 
 public class AuthenticateView {
     public void authenticateView() {
@@ -25,6 +26,9 @@ public class AuthenticateView {
                         break;
                     case "2":
                         alertUtil.alertUtil("Admin");
+                        break;
+                    case "3":
+                        usersLogInView();
                         break;
                     case "e":
                         eventUtil.exitUtil("Authenticate-Exit");

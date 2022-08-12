@@ -4,7 +4,6 @@ import util.AlertUtil;
 import util.EventUtil;
 import util.MenuUtil;
 
-import java.util.Locale;
 import java.util.Scanner;
 
 public class SignInView {
@@ -14,13 +13,13 @@ public class SignInView {
         AlertUtil alertUtil = new AlertUtil();
         EventUtil eventUtil = new EventUtil();
         try{
-            menuUtil.menuUtil("Sign-In-Menu");
             while (true){
                 alertUtil.alertUtil("Sign-In-Confirm");
                 System.out.println("■ Input : ");
                 String selectOption = input.nextLine().toLowerCase().replaceAll("\\s", "");
                 switch (selectOption){
                     case "y":
+                        menuUtil.menuUtil("Sign-In-Menu");
                         eventUtil.signInUtil();
                         break;
                     case "n":

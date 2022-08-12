@@ -11,6 +11,7 @@ public class AlertUtil {
         if (option.equals("Student-Remove-Confirm")) output = "■ Are your sure want to remove this student?" + confirm;
         if (option.equals("Student-Edit-Name-Success")) output = "\033[0;92m■ Student name edited successfully!\033[0m\n";
 
+        if (option.equals("Select")) output = "\033[0;92m■ Select : \n\033[0m";
         if (option.equals("Invalid-Select")) output = "\033[0;91m■ Invalid selected option, please try again!\n\033[0m";
         if (option.equals("Invalid-Input")) output = "\033[0;91m■ Invalid inputed, please try again!\n\033[0m";
 
@@ -25,6 +26,12 @@ public class AlertUtil {
         if (option.equals("DateOfBirth-Require")) output = "\033[0;91m■ Date Of Birth must be formatted as dd/MM/yyyy \033[0m\n";
         if (option.equals("Date Of Birth")) output = "■ Date Of Birth : ";
         if (option.equals("DateOfBirth-Edit-Success")) output = "\033[0;92m■ Date Of Birth edited successfully!\033[0m\n";
+
+        if (option.equals("Account-Id-Not-Exist")) output = "\033[0;91m■ Account id is not exists, please try again!\033[0m\n";
+        if (option.equals("Account-Id")) output = "■ Account Id : ";
+        if (option.equals("Account-Remove-Confirm")) output = "■ Are your sure want to remove this Account?" + confirm;
+        if (option.equals("Account-Remove-Success")) output = "\033[0;92m■ Account removed successfully!\033[0m\n";
+
 
         if (option.equals("Student-Id-Not-Exist")) output = "\033[0;91m■ Student id is not exists, please try again!\033[0m\n";
         if (option.equals("Student-Id-Render")) output = "\033[0;91m■ Student Id does not exist \033[0m\n";

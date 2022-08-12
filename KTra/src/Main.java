@@ -1,5 +1,4 @@
 import view.AuthenticateView;
-import view.MainMenuView;
 
 public class Main {
     public static void main(String[] args) {

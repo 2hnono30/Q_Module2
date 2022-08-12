@@ -23,7 +23,6 @@ public class EventUtil {
     MainMenuView mainMenuView = new MainMenuView();
     SignInView signInView = new SignInView();
     MenuUtil menuUtil = new MenuUtil();
-    ValidateUtil validateUtil = new ValidateUtil();
     AlertUtil alertUtil = new AlertUtil();
     StudentService studentService = new StudentService();
     StudentModel studentModel = new StudentModel();
@@ -41,7 +40,15 @@ public class EventUtil {
                     "LIST", "     ID", "        NAME", "   DOB", "   SEX", "  PHONENUMBER", "      UNIVERCITYNAME", "  GRADELEVEL"
             );
             for (StudentModel temp : studentList) {
-                System.out.printf("║\t%-8s║ %-15s║ %-25s║%-12s║ %-10s║ %-15s║ %-26s║ %-15s%s\n", studentCount, temp.getStudentId(), temp.getFullName(), temp.getDoB(), temp.getSex(), temp.getPhoneNumber(), temp.getUniversityName(), temp.getGradeLevel(), "║");
+                System.out.printf("║\t%-8s║ %-15s║ %-25s║%-12s║ %-10s║ %-15s║ %-26s║ %-15s%s\n",
+                        studentCount,
+                        temp.getStudentId(),
+                        temp.getFullName(),
+                        temp.getDoB(),
+                        temp.getSex(),
+                        temp.getPhoneNumber(),
+                        temp.getUniversityName(),
+                        temp.getGradeLevel(), "║");
                 studentCount++;
             }
             System.out.println("╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝\n");
@@ -56,7 +63,7 @@ public class EventUtil {
             System.out.println("Input studentName ==> ");
             String studentName = input.nextLine();
             try {
-                while (!validateUtil.studentNameValidateUtil(studentName)) {
+                while (!ValidateUtil.studentNameValidateUtil(studentName)) {
                     alertUtil.alertUtil("Student-Name-Require");
                     alertUtil.alertUtil("Student-Name");
                     studentName = input.nextLine();
@@ -67,19 +74,18 @@ public class EventUtil {
             System.out.println("Input DOB => ");
             String dob = input.nextLine();
             try {
-                while (!validateUtil.dateOfBirthvalidateUtil(dob)) {
+                while (!ValidateUtil.dateOfBirthvalidateUtil(dob)) {
                     alertUtil.alertUtil("DateOfBirth-Require");
                     alertUtil.alertUtil("Date Of Birth");
                     dob = input.nextLine();
                 }
-                ;
             } catch (Exception e) {
                 e.printStackTrace();
             }
             System.out.println("input Sex => ");
             String sex = input.nextLine();
             try {
-                while (!validateUtil.sexValidateUtil(sex)) {
+                while (!ValidateUtil.sexValidateUtil(sex)) {
                     alertUtil.alertUtil("Sex-Require");
                     alertUtil.alertUtil("Sex");
                     sex = input.nextLine();
@@ -90,7 +96,7 @@ public class EventUtil {
             System.out.println("Input phoneNumber => ");
             String phoneNumber = input.nextLine();
             try {
-                while (!validateUtil.phoneNumberValidateUtil(phoneNumber)) {
+                while (!ValidateUtil.phoneNumberValidateUtil(phoneNumber)) {
                     alertUtil.alertUtil("Phone-Number-Require");
                     alertUtil.alertUtil("Phone-Number");
                     phoneNumber = input.nextLine();
@@ -161,7 +167,7 @@ public class EventUtil {
                         alertUtil.alertUtil("Student-Name");
                         String studentName = input.nextLine();
                         try {
-                            while (!validateUtil.studentNameValidateUtil(studentName)) {
+                            while (!ValidateUtil.studentNameValidateUtil(studentName)) {
                                 alertUtil.alertUtil("Student-Name-Require");
                                 alertUtil.alertUtil("Student-Name");
                                 studentName = input.nextLine();
@@ -178,7 +184,7 @@ public class EventUtil {
                         alertUtil.alertUtil("Date Of Birth");
                         String dob = input.nextLine();
                         try {
-                            while (!validateUtil.dateOfBirthvalidateUtil(dob)) {
+                            while (!ValidateUtil.dateOfBirthvalidateUtil(dob)) {
                                 alertUtil.alertUtil("DateOfBirth-Require");
                                 alertUtil.alertUtil("Date Of Birth");
                                 dob = input.nextLine();
@@ -195,7 +201,7 @@ public class EventUtil {
                         alertUtil.alertUtil("Sex");
                         String sex = input.nextLine();
                         try {
-                            while (!validateUtil.sexValidateUtil(sex)) {
+                            while (!ValidateUtil.sexValidateUtil(sex)) {
                                 alertUtil.alertUtil("Sex-Require");
                                 alertUtil.alertUtil("Sex");
                                 sex = input.nextLine();
@@ -212,7 +218,7 @@ public class EventUtil {
                         alertUtil.alertUtil("Phone-Number");
                         String phoneNumber = input.nextLine();
                         try {
-                            while (!validateUtil.phoneNumberValidateUtil(phoneNumber)) {
+                            while (!ValidateUtil.phoneNumberValidateUtil(phoneNumber)) {
                                 alertUtil.alertUtil("Phone-Number-Require");
                                 alertUtil.alertUtil("Phone-Number");
                                 phoneNumber = input.nextLine();
@@ -278,22 +284,26 @@ public class EventUtil {
 
     public void sortUtil() {
         menuUtil.menuUtil("Sort-menu");
-        int choice = 0;
-        while (choice != 3) {
+        while (true) {
             System.out.println("Enter the number : ");
-            choice = Integer.parseInt(input.nextLine());
+            String choice = input.nextLine().toLowerCase().replaceAll("\\s", "");
             switch (choice) {
-                case 1:
+                case "1":
                     studentSortByFullNameUtil();
                     menuUtil.menuUtil("Sort-menu");
                     break;
-                case 2:
+                case "2":
                     studentSortByPhoneNumberUtil();
                     menuUtil.menuUtil("Sort-menu");
                     break;
+                case "r":
+                    returnUtil("Uses-Return");
+                    break;
+                case "e":
+                    exitUtil("User-Manager-Exit");
+                    break;
             }
         }
-//        menuUtil.menuUtil("main-menu");
     }
 
     public void removeStudentUtil() {
@@ -358,7 +368,6 @@ public class EventUtil {
         try {
             alertUtil.alertUtil("Sign-In-Username");
             String userName = input.nextLine().replaceAll("\\s", "");
-            ;
             alertUtil.alertUtil("Sign-In-Password");
             String userPassword = input.nextLine().replaceAll("\\s", "");
             if (userService.signIn(userName, userPassword) == null) {
@@ -386,6 +395,10 @@ public class EventUtil {
         if (option.equals("Authenticate-Return")) {
             alertUtil.alertUtil("Return-Success");
             authenticateView.authenticateView();
+        }
+        if (option.equals("Uses-Return")) {
+            alertUtil.alertUtil("Return-Success");
+            userManagerView.userManagerView();
         }
         if (option.equals("User-lobby")) {
             alertUtil.alertUtil("Return-Success");
@@ -417,6 +430,24 @@ public class EventUtil {
                 }
             }
         }
+        if (option.equals("Sign-Out-User")) {
+            while (true) {
+                alertUtil.alertUtil("Sign-Out-Confirm");
+                System.out.println("■ Select : ");
+                String select = input.nextLine().toLowerCase();
+                switch (select) {
+                    case "y":
+                        alertUtil.alertUtil("Sign-Out-Confirm-Success");
+                        authenticateView.authenticateView();
+                        break;
+                    case "n":
+                        alertUtil.alertUtil("Sign-Out-Confirm-Cancel");
+                        userMenuView.userMenuView();
+                        break;
+                    default:
+                }
+            }
+        }
     }
 
     public void exitUtil(String option) {
@@ -435,6 +466,8 @@ public class EventUtil {
                 if (option.equals("Main-Menu-Exit")) mainMenuView.mainMenuView();
                 if (option.equals("Student-Manager-Exit")) studentManagerView.studentManagerView();
                 if (option.equals("User-Manager-Exit")) userManagerView.userManagerView();
+                if (option.equals("User-Sort-Exit")) sortUtil();
+                if (option.equals("User-Menu-Exit")) userMenuView.userMenuView();
                 break;
             default:
         }

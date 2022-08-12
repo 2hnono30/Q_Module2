@@ -2,9 +2,8 @@ package service.implement;
 
 import model.UserModel;
 import model.enumerate.RoleModel;
-import service.Interface.IUserService;
+import service.interfaces.IUserService;
 import util.FileUtil;
-import util.PathUtil;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -59,11 +58,10 @@ public class UserService implements IUserService {
 
     @Override
     public void addUser(UserModel user) {
+        user.setUserId(System.currentTimeMillis() / 100000);
+        user.setUserCreateDate(Instant.now());
         ArrayList<UserModel> userList = getUser();
-
         userList.add(user);
-//        user.setUserCreateDate(Instant.now());
-
         fileUtil.fileWrite(PATH_USER_DATA, userList);
     }
 
@@ -75,26 +73,31 @@ public class UserService implements IUserService {
             if (temp.getUserId() == user.getUserId()) {
 
                 String userName = user.getUserName();
-                if (userName != null && !userName.isEmpty()) temp.setUserName(user.getUserName());
+                if (userName != null && !userName.isEmpty())
+                    temp.setUserName(userName);
 
                 String userPassword = user.getUserPassword();
-                if (userPassword != null && !userPassword.isEmpty()) temp.setUserPassword(user.getUserPassword());
+                if (userPassword != null && !userPassword.isEmpty())
+                    temp.setUserPassword(userPassword);
 
                 String userFullName = user.getUserFullName();
-                if (userFullName != null && !userFullName.isEmpty()) temp.setUserFullName(user.getUserFullName());
+                if (userFullName != null && !userFullName.isEmpty())
+                    temp.setUserFullName(userFullName);
 
-                String userBirthDay = user.getUserBirthDay();
-                if (userBirthDay != null && !userBirthDay.isEmpty()) temp.setUserBirthDay(user.getUserBirthDay());
+//                String userBirthDay = user.getUserBirthDay();
+//                if (userBirthDay != null && !userBirthDay.isEmpty()) temp.setUserBirthDay(user.getUserBirthDay());
 
                 String userAddress = user.getUserAddress();
-                if (userAddress != null && !userAddress.isEmpty()) temp.setUserAddress(user.getUserAddress());
+                if (userAddress != null && !userAddress.isEmpty())
+                    temp.setUserAddress(userAddress);
 
                 String userEmail = user.getUserEmail();
-                if (userEmail != null && !userEmail.isEmpty()) temp.setUserEmail(user.getUserEmail());
+                if (userEmail != null && !userEmail.isEmpty())
+                    temp.setUserEmail(userEmail);
 
                 String userPhoneNumber = user.getUserPhoneNumber();
                 if (userPhoneNumber != null && !userPhoneNumber.isEmpty())
-                    temp.setUserPhoneNumber(user.getUserPhoneNumber());
+                    temp.setUserPhoneNumber(userPhoneNumber);
 
 //                temp.setUserUpdateDate(Instant.now());
                 fileUtil.fileWrite(PATH_USER_DATA, userList);

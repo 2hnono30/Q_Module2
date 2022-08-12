@@ -1,4 +1,4 @@
-package service.Interface;
+package service.interfaces;
 
 import model.StudentModel;
 

@@ -1,10 +1,8 @@
 package view.manager;
 
-import util.AlertUtil;
 import util.EventUtil;
 import util.MenuUtil;
 
-import java.util.Locale;
 import java.util.Scanner;
 
 public class UserManagerView {
@@ -30,7 +28,7 @@ public class UserManagerView {
                         break;
                     case "3":
                         System.out.println("=============================================================================== Sort =======================================================================");
-                        eventUtil.sortUtil();
+                        eventUtil.usersortUtil();
                         menuUtil.menuUtil("User-menu");
                         break;
                     case "r":

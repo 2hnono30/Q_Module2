@@ -6,7 +6,6 @@ import service.implement.UserService;
 import view.AuthenticateView;
 import view.MainMenuView;
 import view.SignInView;
-import view.manager.InputOption;
 
 import java.util.List;
 import java.util.Scanner;
@@ -220,139 +219,17 @@ public class UsersEventUtil {
         }
     }
 
-//    private String inputEmail() {
-//        System.out.println("Nhập email (vd: thuan@gmail.com)");
-//        System.out.print(" ⭆ ");
-//        String email;
-//        do {
-//            if (!ValidateUtil.isEmailValid(email = input.nextLine())) {
-//                System.out.println("Email " + email + "của bạn không đúng định dạng! Vui lòng kiểm tra và nhập lại ");
-//                System.out.println("Nhập email (vd: thuan@gmail.com)");
-//                System.out.print(" ⭆ ");
-//                continue;
-//            }
-//            if (userService.existsUserEmail(email)) {
-//                System.out.println("Email " + email + "của bạn đã tồn tại! vui lòng kiểm tra lại");
-//                System.out.println("Nhập email (vd: thuan@gmail.com)");
-//                System.out.print(" ⭆ ");
-//                continue;
-//            }
-//            break;
-//        } while (true);
-//        return email;
-//    }
-//
-//    private String inputAddress(InputOption option) {
-//        switch (option) {
-//            case ADD:
-//                System.out.println("Nhập địa chỉ (vd: Huế)");
-//                break;
-//            case UPDATE:
-//                System.out.println("Nhập địa chỉ mà bạn muốn đổi");
-//                break;
-//        }
-//        System.out.print(" ⭆ ");
-//        return input.nextLine();
-//    }
-//
-//    public String inputPhone(InputOption option) {
-//        switch (option) {
-//            case ADD:
-//                System.out.println("Nhập số điện thoại (vd: 0345129876): ");
-//                break;
-//            case UPDATE:
-//                System.out.println("Nhập số điện thoại mà bạn muốn đổi");
-//                break;
-//        }
-//        System.out.print(" ⭆ ");
-//        String phone;
-//        do {
-//            phone = input.nextLine();
-//            if (!ValidateUtil.phoneNumberValidateUtil(phone)) {
-//                System.out.println("Số " + phone + " của bạn không đúng. Vui lòng nhập lại! " + "(Số điện thoại bao gồm 10 số và bắt đầu là số 0)");
-//                System.out.println("Nhập số điện thoại (vd: 0345129876)");
-//                System.out.print(" ⭆ ");
-//                continue;
-//            }
-//            if (userService.existsUserPhoneNumber(phone)) {
-//                System.out.println("Số này đã tồn tại! Mời bạn nhập lại");
-//                System.out.print(" ⭆ ");
-//                continue;
-//            }
-//            break;
-//        } while (true);
-//
-//        return phone;
-//    }
-//
-//    private String inputFullName(InputOption option) {
-//        switch (option) {
-//            case ADD:
-//                System.out.println("Nhập họ và tên (vd: Ho Thi Thuan) ");
-//                break;
-//            case UPDATE:
-//                System.out.println("Nhập tên mà bạn muốn sửa đổi");
-//                break;
-//        }
-//
-//        System.out.print(" ⭆ ");
-//        String fullName;
-//        while (!ValidateUtil.isNameValid(fullName = input.nextLine())) {
-//            System.out.println("Tên " + fullName + "không đúng định dạng." + " Vui lòng nhập lại!" + " (Tên phải viết hoa chữ cái đầu và không dấu)");
-//            System.out.println("Nhập tên (vd: Ho Thuan) ");
-//            System.out.print(" ⭆ ");
-//        }
-//        return fullName;
-//    }
-
-    private int inputId(InputOption option) {
-        int id;
-        switch (option) {
-            case ADD:
-                System.out.println("Nhập Id : ");
-                break;
-            case UPDATE:
-                System.out.println("Nhập id bạn muốn sửa : ");
-                break;
-            case DELETE:
-                System.out.println("Nhập id muốn xóa : ");
-                break;
-        }
-        boolean isRetry = false;
-        do {
-            id = retryParseInt();
-            boolean exist = userService.existsUserId(id);
-            switch (option) {
-                case ADD:
-                    if (exist)
-                        System.out.println("Id này đã tồn tại. Vui lòng nhập id khác!");
-                    isRetry = exist;
-                    break;
-                case UPDATE:
-                    if (!exist)
-                        System.out.println("Không tìm thấy id! Vui lòng nhập lại");
-                    isRetry = !exist;
-                    break;
-            }
-        } while (isRetry);
-        return id;
-    }
-
     public void setRole(UserModel user) {
-        System.out.println("= = SET ROLE = =");
-        System.out.println("∥   1. USER    ∥");
-        System.out.println("∥   2. ADMIN   ∥");
-        System.out.println("= = = =  = = = = ");
-        System.out.println("Chọn Role: ");
-        System.out.print(" ⭆ ");
+        menuUtil.menuUtil("Set-Role");
+        alertUtil.alertUtil("Select");
         int option = input.nextInt();
         input.nextLine();
         switch (option) {
             case 1:
-                user.setUserRole(RoleModel.STAFF);
+                user.setUserRole(RoleModel.ADMIN);
                 break;
             case 2:
-                user.setUserRole(RoleModel.ADMIN);
+                user.setUserRole(RoleModel.STAFF);
                 break;
             default:
                 System.out.println("Nhập không đúng! Vui lòng nhập lại");
@@ -364,39 +241,6 @@ public class UsersEventUtil {
         userModel.setUserRole(RoleModel.STAFF);
     }
 
-//    private String inputPassword() {
-//        System.out.println("Nhập mật khẩu( mật khẩu phải > 8 kí tự )");
-//        System.out.print(" ⭆ ");
-//        String password;
-//        while (!ValidateUtil.isPasswordValid(password = input.nextLine())) {
-//            System.out.println("Mật khẩu yếu! Vui lòng nhập lại ");
-//            System.out.print(" ⭆ ");
-//        }
-//        return password;
-//    }
-//
-//    public String inputUsername() {
-//        System.out.println("Nhập Username (không bao gồm dấu cách, kí tự đặc biệt)");
-//        System.out.print(" ⭆ ");
-//        String username;
-//
-//        while (true){
-//            if (!ValidateUtil.isUsernameValid(username = retryString("Username"))) {
-//                System.out.println(username + " của bạn không đúng định dạng! Vui lòng kiểm tra và nhập lại ");
-//                System.out.print(" ⭆ ");
-//                continue;
-//            }
-//            if (userService.existsUserName(username)) {
-//                System.out.println("Username này đã tồn tại. Vui lòng nhập lại");
-//                System.out.print(" ⭆ ");
-//                continue;
-//            }
-//            break;
-//        }
-//
-//        return username;
-//    }
-
     public void showUsers() {
         List<UserModel> users = userService.getUser();
         int userListCount = 1;
@@ -406,7 +250,7 @@ public class UsersEventUtil {
                         "╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣\n" +
                         "║ %-6s║ %-10s║ %-25s║ %-15s║ %-25s║ %-15s║ %-15s║ %-25s║ %-25s║\n" +
                         "╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣\n",
-                "LIST", "    ID","           NAME", "   Địa chỉ", "          Email", " PHONENUMBER", " Người dùng", "        Ngày tạo", "     Ngày cập nhật"
+                "LIST", "    ID", "           NAME", "   Địa chỉ", "          Email", " PHONENUMBER", " Người dùng", "        Ngày tạo", "     Ngày cập nhật"
         );
         for (UserModel user : users) {
             System.out.printf("║ %-6s║ %-10s║ %-25s║ %-15s║ %-25s║ %-15s║ %-15s║ %-25s║ %-25s║ \n",
@@ -422,14 +266,13 @@ public class UsersEventUtil {
             userListCount++;
         }
         System.out.println("╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝\n");
-//        if (inputOption == InputOption.SHOW) isRetry(InputOption.SHOW);
     }
 
     public void deleteUsers() {
         try {
-//            showUsers(InputOption.DELETE);
             showUsers();
-            long id = inputId(InputOption.DELETE);
+            alertUtil.alertUtil("Delete-Id");
+            long id = Long.parseLong(input.nextLine().replaceAll("\\s", ""));
             while (!userService.existsUserId(id)) {
                 alertUtil.alertUtil("Account-Id-Not-Exist");
                 alertUtil.alertUtil("Account-Id");
@@ -450,7 +293,6 @@ public class UsersEventUtil {
                     adminLogInView();
                     break;
             }
-
         } catch (NumberFormatException e) {
             throw new RuntimeException(e);
         }
@@ -461,9 +303,7 @@ public class UsersEventUtil {
     public void updateUser() {
         try {
             while (true) {
-//                showUsers(InputOption.UPDATE);
                 showUsers();
-                //Nếu Id khong Ton tại sẽ không thoát ra khỏi vong lặp trong ham inputId
                 System.out.println("■ Id : ");
                 long id = Long.parseLong(input.nextLine().replaceAll("\\s", ""));
                 while (!userService.existsUserId(id)) {
@@ -568,9 +408,7 @@ public class UsersEventUtil {
     public void updateAdmin() {
         try {
             while (true) {
-//                showUsers(InputOption.UPDATE);
                 showUsers();
-                //Nếu Id khong Ton tại sẽ không thoát ra khỏi vong lặp trong ham inputId
                 System.out.println("■ Id : ");
                 long id = Long.parseLong(input.nextLine().replaceAll("\\s", ""));
                 while (!userService.existsUserId(id)) {
@@ -752,6 +590,7 @@ public class UsersEventUtil {
 //            }
 //        }
     }
+
     public static boolean isRetryDelete() {
         do {
             System.out.print(" ⭆ ");
@@ -771,23 +610,6 @@ public class UsersEventUtil {
 
     public static boolean isRetry() {
         do {
-//            switch (inputOption) {
-//                case ADD:
-//                    menuUtil.menuUtil("Add-Update");
-//                    break;
-//                case UPDATE:
-//                    menuUtil.menuUtil("Add-Update");
-//                    break;
-//                case DELETE:
-//                    menuUtil.menuUtil("Delete-Show");
-//                    break;
-//                case SHOW:
-//                    menuUtil.menuUtil("Delete-Show");
-//                    break;
-//                default:
-//                    throw new IllegalStateException("Unexpected value: " + inputOption);
-//            }
-
             System.out.print(" ⭆ ");
             String option = input.nextLine();
             switch (option) {
@@ -805,27 +627,4 @@ public class UsersEventUtil {
             }
         } while (true);
     }
-
-    public static int retryParseInt() {
-        int result;
-        do {
-            System.out.print(" ⭆ ");
-            try {
-                result = Integer.parseInt(input.nextLine());
-                return result;
-            } catch (Exception ex) {
-                System.out.println("Nhập sai! vui lòng nhập lại");
-            }
-        } while (true);
-    }
-
-//    public static String retryString(String fieldName) {
-//        String result;
-//        System.out.print(" ⭆ ");
-//        while ((result = input.nextLine()).isEmpty()) {
-//            System.out.printf("%s không được để trống\n", fieldName);
-//            System.out.print(" ⭆ ");
-//        }
-//        return result;
-//    }
 }

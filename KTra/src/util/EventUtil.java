@@ -297,15 +297,37 @@ public class EventUtil {
                     menuUtil.menuUtil("Sort-menu");
                     break;
                 case "r":
-                    returnUtil("Uses-Return");
+                    returnUtil("Student-Manager-Return");
                     break;
                 case "e":
-                    exitUtil("User-Manager-Exit");
+                    exitUtil("Student-Manager-Sort-Exit");
                     break;
             }
         }
     }
-
+    public void usersortUtil() {
+        menuUtil.menuUtil("Sort-menu");
+        while (true) {
+            System.out.println("Enter the number : ");
+            String choice = input.nextLine().toLowerCase().replaceAll("\\s", "");
+            switch (choice) {
+                case "1":
+                    studentSortByFullNameUtil();
+                    menuUtil.menuUtil("Sort-menu");
+                    break;
+                case "2":
+                    studentSortByPhoneNumberUtil();
+                    menuUtil.menuUtil("Sort-menu");
+                    break;
+                case "r":
+                    returnUtil("Uses-Return");
+                    break;
+                case "e":
+                    exitUtil("Users-Sort-Exit");
+                    break;
+            }
+        }
+    }
     public void removeStudentUtil() {
         renderStudentUtil();
         alertUtil.alertUtil("Student-Id");
@@ -329,7 +351,6 @@ public class EventUtil {
             case "n":
                 alertUtil.alertUtil("Student-Remove-Cancel");
                 menuUtil.menuUtil("main-menu");
-                renderStudentUtil();
                 break;
         }
     }
@@ -468,6 +489,8 @@ public class EventUtil {
                 if (option.equals("User-Manager-Exit")) userManagerView.userManagerView();
                 if (option.equals("User-Sort-Exit")) sortUtil();
                 if (option.equals("User-Menu-Exit")) userMenuView.userMenuView();
+                if (option.equals("Student-Manager-Sort-Exit")) sortUtil();
+                if (option.equals("Users-Sort-Exit")) usersortUtil();
                 break;
             default:
         }

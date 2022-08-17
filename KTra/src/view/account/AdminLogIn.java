@@ -47,8 +47,4 @@ public class AdminLogIn {
             e.printStackTrace();
         }
     }
-
-    public static void main(String[] args) {
-        adminLogInView();
-    }
 }

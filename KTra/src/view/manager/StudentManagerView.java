@@ -39,7 +39,6 @@ public class StudentManagerView {
                         eventUtil.removeStudentUtil();
                         break;
                     case "6":
-                        System.out.println("=============================================================================== Sort =======================================================================");
                         eventUtil.sortUtil();
                         menuUtil.menuUtil("main-menu");
                         break;

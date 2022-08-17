@@ -57,6 +57,7 @@ public class AlertUtil {
         if (option.equals("Student-Id-Not-Exist")) output = "\033[0;91m■ Student id is not exists, please try again!\033[0m\n";
         if (option.equals("Student-Id-Render")) output = "\033[0;91m■ Id does not exist \033[0m\n";
         if (option.equals("Student-Id")) output = "■ Id : ";
+        if (option.equals("Delete-Id")) output = "■ Id want to delete : ";
 
         if (option.equals("Continue")) output = "■ Continue Edit ? \n";
         if (option.equals("Continue-rep")) output = "1. yes \n" + "2. no \n" + "Enter the number : \n";
